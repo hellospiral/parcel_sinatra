@@ -6,10 +6,10 @@ class Parcel
     @distance_array = [50, 100, 150, 200, 250, 300]
     @distance_factor = {50 => 1, 100 => 1.1, 150 => 1.2, 200 => 1.3, 250 => 1.4, 300 => 1.5 }
     @BaseRate = 5
-    @height = height
-    @length = length
-    @width = width
-    @weight = weight
+    @height = height.to_i
+    @length = length.to_i
+    @width = width.to_i
+    @weight = weight.to_i
   end
 
   define_method(:height) do
@@ -33,6 +33,7 @@ class Parcel
   end
 
   define_method(:cost_to_ship) do |distance|
+    distance = distance.to_i
     weight_index = 0
     if @weight > @weight_array.last
       weight_index = @cost_factor[@weight_array.last]
