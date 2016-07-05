@@ -30,5 +30,26 @@ describe(Parcel) do
       new_parcel = Parcel.new(3, 3, 3, 1)
       expect(new_parcel.cost_to_ship(49)).to eq(5)
     end
+
+    it('returns weight times one if distance is under 50 and weight is greater than 50') do
+      new_parcel = Parcel.new(3, 3, 3, 100)
+      expect(new_parcel.cost_to_ship(49)).to eq(100)
+    end
+
+    it('return value is weight times cost factor if distance is 50 or less') do
+      new_parcel = Parcel.new(3, 3, 3, 1)
+      expect(new_parcel.cost_to_ship(50)).to eq(5)
+    end
+
+    it('return value is weight times cost factor times 1.1 if distance is greater than 50 but less than or equal to 100') do
+      new_parcel = Parcel.new(3, 3, 3, 1)
+      expect(new_parcel.cost_to_ship(51)).to eq(5.5)
+    end
+
+    it('return value is weight times cost factor times 1.1 if distance is greater than 50 but less than or equal to 100') do
+      new_parcel = Parcel.new(3, 3, 3, 14)
+      expect(new_parcel.cost_to_ship(386)).to eq(42)
+    end
+
   end
 end
